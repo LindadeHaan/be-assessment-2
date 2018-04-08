@@ -48,9 +48,18 @@ npm install package_name
 ## Structure
 In the server.js file everything for the whole app comes together. In this file you can see all the code I used to make the  express server and how I alter the MySQL database.
 
-### Static
+### static
 In the static folder are my css files, js files, images and uploads. These files are in the static folder, because these files do not change. 
 ```js
 app.use(express.static('static'))
 ```
-Whith this code, the files in the static folder are available to use.
+With this code, the files in the static folder are available to use.
+I have various css files, because like this it is more clear to see what has which style. 
+
+### view
+In the view folder are all of the ejs templates 
+```js
+app.set('view engine', 'ejs')
+app.set('views', 'views')
+```
+The view folder contains the `index.ejs`, that is where the `/` is hosted. It also includes the register, log-in, profile, matches and error pages.
