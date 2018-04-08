@@ -141,3 +141,6 @@ DELETE FROM table_name WHERE id = id_number
 - [x] Show the gender users filled in as preferred gender as matches.
 - [x] Add MySQL
 - [x] Add license
+
+## License
+[MIT](https://github.com/LindadeHaan/be-assessment-2/blob/master/LICENSE)
