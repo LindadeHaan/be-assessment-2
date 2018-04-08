@@ -63,3 +63,81 @@ app.set('view engine', 'ejs')
 app.set('views', 'views')
 ```
 The view folder contains the `index.ejs`, that is where the `/` is hosted. It also includes the register, log-in, profile, matches and error pages.
+
+## Database
+I used the MySQL database.
+
+Install MySQL:
+
+* Install [Homebrew](ttps://brew.sh/index_nl)
+* `brew update`
+* `brew install mysql`
+* Make a connection in your server.js with MySQL 
+```js
+var connection = mysql.createConnection({
+  host: 'localhos',
+  user: 'your_username',
+  password: '',
+  database: 'your_database_name'
+})
+connection.connect()
+```
+* Start the MySQL database in the terminal: `mysql -u your_username`
+* Go to your database in the terminal so you can work in that database: `use your_database_name`
+
+__MySQL works with tables__
+
+Create a new table:
+```
+CREATE TABLE IF NOT EXISTS messages (
+  id INT NOT NULL AUTO_INCREMENT,
+  name TEXT CHARACTER SET utf8,
+  age TEXT CHARACTER SET utf8,
+  place TEXT CHARACTER SET utf8,
+  PRIMARY KEY (id)
+);
+```
+This is how you create a table in a MySQL database. The `id INT NOT NULL AUTO_INCREMENT,` and `PRIMARY KEY (id)`
+line you can leave just like this.
+Between those two lines you can declare your table columns. Most of the time those columms are the properties of, for example, your users have to fill in to register for the site.
+
+How to instert something into a table:
+```
+INSERT INTO profiles (column_name1, column_name2, column_name3, column_name4, column_name5) VALUES (
+    ‘value1',
+    'value2',
+    'value3',
+    ‘value4’,
+    ‘value5’
+    );
+```
+How to add a column in your table:
+```
+ALTER TABLE table_name
+ADD column_name datatype;
+```
+
+How to delete a column from your table:
+```
+ALTER TABLE table_name
+DROP COLUMN column_name
+```
+
+How to delete a row from your table:
+```
+DELETE FROM table_name WHERE id = id_number
+```
+
+## To Do List
+- [x] Make a repository with the name: be-assessment-2  
+- [x] Make sure every page is linked to another properly.
+- [x] Add concept of the datingsite to readme  
+- [x] Add files to repository: server, ejs templates, js files, css files, static folder, view folder, uploads folder, README.md, package.json and images.
+- [x] Add Express Session to get users to stay logged in.
+- [x] Make it possile for users to log out.
+- [x] Make it possible to upload an image and show this as a profile picture.
+- [x] Let people communicate in some kind of way with each other.
+- [x] Add an option for users to change their information and make it work.
+- [x] Show the gender users filled in as preferred gender as matches.
+- [x] Add MySQL
+- [x] Add license
