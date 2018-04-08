@@ -7,11 +7,50 @@ To register for this datingsite you have to fill in a form with your information
 
 When you filled in the form to register, at the moment, you only get matched with the people who have the gender you prefer as a partner.
 
-## Instal Partners&Pets
+## Install Partners&Pets
 To install Partners&Pets you have to follow a few steps:
 
-use cd in your terminal to get to the place where you want to install on you computer.
+Use cd in your terminal to get to the place where you want to install on you computer.
 
-to clone the repository
+To clone the repository
 ```
-git clone https://github.com/LindadeHaan/be-assessment2.git
+git clone https://github.com/LindadeHaan/be-assessment-2.git
+cd be-assessment-2
+npm install
+```
+Start server:
+```
+node server.js
+```
+
+### package.json
+To make a package.json file you have to follow a few steps in your terminal:
+```
+npm init
+```
+After `npm init` you just have to fill in what your terminal requires.
+In your package.json file you can see which packages you already installed and which packages you still have to install.
+
+### Packages
+
+* [Express](https://github.com/expressjs/express)
+* [EJS](https://github.com/tj/ejs)
+* [Body Parser](https://github.com/expressjs/body-parser)
+* [Multer](https://github.com/expressjs/multer)
+* [MySQL](https://github.com/mysqljs/mysql)
+* [Express Session](https://github.com/expressjs/session)
+
+How to install a package:
+```
+npm install package_name
+```
+
+## Structure
+In the server.js file everything for the whole app comes together. In this file you can see all the code I used to make the  express server and how I alter the MySQL database.
+
+### Static
+In the static folder are my css files, js files, images and uploads. These files are in the static folder, because these files do not change. 
+```js
+app.use(express.static('static'))
+```
+Whith this code, the files in the static folder are available to use.
