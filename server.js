@@ -1,3 +1,8 @@
+// My code is the same as the code of Nina van Bergen, Jessie Mason and a part of the code of May Johansson.
+// We worked together on the code, so that is why it is pretty much the same code.
+// Wouter Lem also thaught us some of the code in this file.
+// We had lessons from him about MySQL.
+
 'use strict'
 
 console.log('server is starting')
