@@ -72,6 +72,7 @@ button {
     padding: 0.5rem;
     border-radius: 0.5rem;
     margin-left: 7rem;
+    color: white;
 }
 
 input[type="checkbox"] {
@@ -94,7 +95,7 @@ section{
 
 /* VRAAG 1 */
 
-label.pets {
+label.pets{
     display: flex;
     justify-content: flex-end;
     flex-direction: column;

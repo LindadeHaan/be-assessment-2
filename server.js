@@ -5,9 +5,10 @@ console.log('server is starting')
 var express = require('express')
 var ejs = require('ejs')
 var bodyParser = require('body-parser')
-var path = require('path')
 var multer = require('multer')
-var upload = multer({ dest: 'static/uploads/'})
+var upload = multer({
+  dest: 'static/uploads/'
+})
 var mysql = require('mysql')
 var session = require('express-session')
 var app = express()
@@ -15,7 +16,9 @@ var app = express()
 app.set('view engine', 'ejs')
 app.set('views', 'views')
 app.use(express.static('static'))
-app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyParser.urlencoded({
+  extended: true
+}))
 app.use(session({
   secret: 'hoihoi',
   resave: false,
@@ -30,13 +33,10 @@ app.get('/profiel/:id', profile)
 app.get('/inloggen', login)
 app.get('/logout', logout)
 app.get('/updatePage', updatePage)
-// app.get('/registreren', register)
 app.get('/detail/:id', detail)
-// app.get('/profiel', renderProfiel)
 app.get('/matches', matches)
 app.get('/detail', chat)
 app.get('/registreren', renderForm)
-// app.post('/profiel', add)
 app.get('/', listening)
 app.listen(3000)
 
@@ -94,86 +94,76 @@ function listening(req, res) {
 
 function profile(req, res) {
   var id = req.params.id
-  connection.query('SELECT * FROM profiles WHERE id = ?', id, function(err, users){
+  connection.query('SELECT * FROM profiles WHERE id = ?', id, function(err, users) {
     if (err) throw err
     var user = users[0]
     var locals = {
       user: user,
       session: req.session,
-      img: req.file
     }
     console.log(locals)
     // locals heet zo, omdat het alles local variable bevat
     res.render('profiel.ejs', locals)
   })
 }
-
-function handleRegister(req, res, next){
+// Inspiratie en bron: Deanna: https://github.com/deannabosschert/freshstart/blob/master/index.js en Titus: https://github.com/cmda-be/course-17-18/blob/master/examples/mysql-server/index.js
+function handleRegister(req, res, next) {
   connection.query('INSERT INTO profiles SET ?', {
-      img: req.file ? req.file.filename : null,
-      id: req.body.id,
-      name: req.body.name,
-      age: req.body.age,
-      city: req.body.city,
-      email: req.body.email,
-      favpet: req.body.favpet,
-      pet: req.body.pet,
-      gender: req.body.gender,
-      preferredGender: req.body.preferredGender,
-      password: req.body.password
-    }, done)
+    img: req.file ? req.file.filename : null,
+    id: req.body.id,
+    name: req.body.name,
+    age: req.body.age,
+    city: req.body.city,
+    email: req.body.email,
+    favpet: req.body.favpet,
+    pet: req.body.pet,
+    gender: req.body.gender,
+    preferredGender: req.body.preferredGender,
+    password: req.body.password
+  }, done)
 
-    function done(err, data) {
-      if (err) {
-        next(err)
-      } else {
-        res.redirect('/profiel/' + data.insertId)
-      }
+  function done(err, data) {
+    if (err) {
+      next(err)
+    } else {
+      res.redirect('/inloggen')
     }
   }
-
-
-//   var body = req.body
-//
-//   connection.query('INSERT INTO profiles SET ?', body)
-//
-//   res.redirect('/inloggen')
-// }
+}
 
 function login(req, res) {
   res.render('inloggen.ejs')
 }
 
-function logout(req, res){
- if (req.session) {
-   req.session.destroy(function (err){
-     if (err) {
-       return res.status(404).render('error.ejs', {
-         id: 404,
-         description: err,
-         map: "../"
-       })
-     } else {
-       return res.redirect('/')
-     }
-   })
- }
+function logout(req, res) {
+  if (req.session) {
+    req.session.destroy(function(err) {
+      if (err) {
+        return res.status(404).render('error.ejs', {
+          id: 404,
+          description: err,
+          map: "../"
+        })
+      } else {
+        return res.redirect('/')
+      }
+    })
+  }
 }
 
-function handleLogin(req, res){
+function handleLogin(req, res) {
   var body = Object.assign({}, req.body)
-  // res.end(JSON.stringify(body))
   connection.query('SELECT * FROM profiles WHERE email = ?', body.email, function(err, users) {
     if (err) throw err;
     var user = users[0]
     // dit moet gebeuren als alles correct is bij inloggen
-    if (user && user.password === body.password){
+    if (user && user.password === body.password) {
       req.session.loggedIn = true
       // weet welke gebruiker ingelogd is
       req.session.user = user
       res.redirect('/profiel/' + users[0].id)
-    } else{
-      res.end('werkt niet!!!!')
+    } else {
+      res.render('inloggen.ejs')
     }
   })
 }
@@ -181,16 +171,13 @@ function handleLogin(req, res){
 function matches(req, res, users) {
   var user = users[0]
   console.log('filter matches')
-  if ( req.session.user.preferredGender == 'female' ) {
-  // selecteer iedereen met gender male
+  if (req.session.user.preferredGender == 'female') {
+    // selecteer iedereen met gender male
     connection.query("SELECT * FROM profiles WHERE gender = 'female'", onDone)
-  }
-  else {
-  // selecteer iedereen met gender female
+  } else {
+    // selecteer iedereen met gender female
     connection.query("SELECT * FROM profiles WHERE gender = 'male'", onDone)
   }
-
-  //connection.query('SELECT * FROM profiles', onDone)
 
   function onDone(err, data) {
     if (err || data.length === 0) {
@@ -209,15 +196,14 @@ function matches(req, res, users) {
       }
       res.render('matches.ejs', locals)
     }
-    }
   }
-
+}
 
 function chat(req, res) {
   var id = req.params.id
   connection.query('SELECT * FROM profiles', id, onDone)
 
-  function onDone(err, data) {
+  function onDone(err, data, messages) {
     if (err || data.length === 0) {
       //account niet kunnen vinden
       //404 account not found
@@ -230,22 +216,23 @@ function chat(req, res) {
     } else {
       var locals = {
         data: data,
-        session: req.session
+        session: req.session,
+        messages: messages
       }
       res.render('detail.ejs', locals)
     }
-    }
+  }
 }
 
 function renderForm(req, res) {
-      res.render('register.ejs', {
-        data: data
-      })
-    }
+  res.render('register.ejs', {
+    data: data
+  })
+}
 
 function detail(req, res) {
   var id = req.params.id
-  connection.query('SELECT * FROM profiles WHERE id = ?', id, function(err, users){
+  connection.query('SELECT * FROM profiles WHERE id = ?', id, function(err, users) {
     if (err) throw err
     var user = users[0]
     connection.query('SELECT * FROM messages WHERE me = ? AND other = ? OR me = ? AND other = ?', [
@@ -253,7 +240,7 @@ function detail(req, res) {
       req.params.id,
       req.params.id,
       req.session.user.id
-    ], function(err, messages){
+    ], function(err, messages) {
       if (err) throw err
       var locals = {
         data: user,
@@ -265,7 +252,7 @@ function detail(req, res) {
   })
 }
 
-function saveMessage(req, res){
+function saveMessage(req, res) {
   var body = Object.assign({}, req.body)
   connection.query('INSERT INTO messages SET ?', {
     chatting: req.body.chatting,
@@ -273,7 +260,7 @@ function saveMessage(req, res){
     other: req.body.other,
   }, done)
 
-//Bron: titus github & Nina
+  //Bron: titus github & Nina
   function done(err, data) {
     if (err) {
       console.log(err)
@@ -288,37 +275,38 @@ function saveMessage(req, res){
   }
 }
 
-function deleteAccount(req, res){
+function deleteAccount(req, res) {
   var id = req.params.id //params haalt de id van de gebruiker
-  connection.query('DELETE FROM profiles WHERE id = ?', id, function(err, users){
+  connection.query('DELETE FROM profiles WHERE id = ?', id, function(err, users) {
     if (err) throw err
     res.redirect('/')
   })
 }
 
-function updatePage(req, res){
+function updatePage(req, res) {
   console.log("open update.ejs")
   var id = req.params.id
-  connection.query("SELECT * FROM profiles",  function (err, data) {
+  connection.query("SELECT * FROM profiles", function(err, data) {
     var locals = {
       data: data,
       session: req.session
     }
     res.render('update.ejs', locals)
   })
-  }
-
-function update(req, res){
-var id = req.params.id
-var body = req.body
-connection.query("UPDATE profiles SET name = ?, email = ?, age = ?, gender = ?, password = ?, preferredGender = ?, city = ?, favpet = ?, pet = ? WHERE id = ?", [body.name, body.email, body.age, body.gender, body.password, body.preferredGender, body.city, body.favpet, body.pet, id], done)
-function done (err, data){
-  if (err) throw err
-  console.log("Inserted!")
-  var locals = {
-    data: data,
-    session: req.session
-  }
-    res.redirect("/profiel/" + req.session.user.id )
 }
+
+function update(req, res) {
+  var id = req.params.id
+  var body = req.body
+  connection.query("UPDATE profiles SET name = ?, email = ?, age = ?, gender = ?, password = ?, preferredGender = ?, city = ?, favpet = ?, pet = ? WHERE id = ?", [body.name, body.email, body.age, body.gender, body.password, body.preferredGender, body.city, body.favpet, body.pet, id], done)
+
+  function done(err, data) {
+    if (err) throw err
+    console.log("Inserted!")
+    var locals = {
+      data: data,
+      session: req.session
+    }
+    res.redirect("/profiel/" + req.session.user.id)
+  }
 }

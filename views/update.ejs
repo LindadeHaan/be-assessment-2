@@ -1,78 +1,58 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="../styles/dating.css">
-    <link rel="stylesheet" href="../styles/register.css">
-    <title>Parnters&Pets</title>
-  </head>
-  <body>
 
-    <header>
-        <h1><a href="/">Partners&Pets</a></h1>
-        <a href="/inloggen"><img src="images/hartwit.png" alt="matches"></a>
-        <a href="/inloggen"><img src="images/chaticon.png" alt="chat"></a>
-        <img id="profile" src="images/profileicon.png" alt="Profiel">
-    </header>
-        <div id="nav" class="dropdown">
-          <a href="/profiel//<%= session.user.id %>">Profiel</a>
-          <a href="/logout">Log uit</a>
-        </div>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="../styles/dating.css">
+  <link rel="stylesheet" href="styles/register.css">
+  <title>Parnters&Pets</title>
+</head>
 
-        <main>
+<body>
 
-          <form action="/update/<%= session.user.id %>" method="POST">
+  <header>
+    <h1><a href="/">Partners&Pets</a></h1>
+    <a href="/inloggen"><img src="images/hartwit.png" alt="matches"></a>
+    <img id="profile" src="images/profileicon.png" alt="Profiel">
+  </header>
+  <div id="nav" class="dropdown">
+    <a href="/profiel//<%= session.user.id %>">Profiel</a>
+    <a href="/logout">Log uit</a>
+  </div>
 
-              <section>
-                  <fieldset>Wijzig je gegevens
-                    <label>Naam:
+  <main>
+
+    <form action="/update/<%= session.user.id %>" method="POST">
+
+      <section>
+        <fieldset>Wijzig je gegevens
+          <label>Naam:
                      <input type="name" name="name" required></label>
-                    <label> Leeftijd:
+          <label> Leeftijd:
                      <input type="number" name="age" required></label>
-                    <label>Woonplaats:
+          <label>Woonplaats:
                      <input type="city" name="city" required>
                      </label>
-                    <label>Wachtwoord:
+          <label>Wachtwoord:
                      <input type="password" name="password" required></label>
-                    <label>Herhaal wachtwoord:
+          <label>Herhaal wachtwoord:
                      <input type="password" required></label>
-                    <label>E-mailadres:
+          <label>E-mailadres:
                          <input type="email" name="email" required></label>
 
-                    <label>Ik ben een:
+          <label>Ik ben een:
                      <input class="box" type="radio" name="gender" value="male" checked="checked">Man
                      <input class="box" type="radio" name="gender" value="female">Vrouw</label>
-                    <label>Ik ben op zoek naar een:
+          <label>Ik ben op zoek naar een:
                      <input class="box" type="checkbox" name="preferredGender" value="male">Man
                      <input class="box" type="checkbox" name="preferredGender" value="female">Vrouw</label>
-                    <a href="/inloggen">Ik heb al een account</a>
 
-                  </fieldset>
-              </section>
+        </fieldset>
+      </section>
 
+      <button type="submit" value="verstuur">Volgende</button>
+    </form>
 
-              <section>
-                  <fieldset>Vraag 1: Wat is jouw favoriete huisdier?
-          <% data.forEach(function(data){ %>
-                    <label class="pets"><input class="vraag1" type="checkbox" name="favpet" value="<%= data.namePet %>"><img class="dieren" src="<%= data.img %>" alt="dog"> <%= data.namePet %> </label>
-          <% }) %>
-
-                  </fieldset>
-              </section>
-
-              <section>
-                <h2>Vraag 2: Heb je op dit moment een huisdier?</h2>
-
-                <label class="q2"><input type="radio" name="pet" value="Ja" checked="checked"> Ja
-                                  <input type="radio" name="pet" value="Nee"> Nee </label>
-              </section>
-
-
-
-
-              <button type="submit" value="verstuur">Volgende</button>
-            </form>
-
-        </main>
-        <script src="../js/dropdown.js"></script>
-    </body>
+  </main>
+  <script src="../js/dropdown.js"></script>
+</body>

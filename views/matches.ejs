@@ -12,7 +12,6 @@
    <header>
        <h1><a href="/profiel">Partners&Pets</a></h1>
        <a href="/matches"><img src="images/hartwit.png" alt="matches"></a>
-       <a href="/chat"><img src="images/chaticon.png" alt="chat"></a>
       <% if (session && session.loggedIn) { %>
        <img id="profile" src="images/profileicon.png" alt="Profiel">
        <% } %>
@@ -28,7 +27,7 @@
 <% data.forEach(function(data){ %>
        <section>
           <h3> <%= data.name %> </h3>
-          <a href="/detail/<%= data.id %>"><img class="profielfoto" src=' <%= data.photo %>' alt="profielfoto"></a>
+          <a href="/detail/<%= data.id %>"><img class="profielfoto" src="../uploads/<%= data.img %>" alt="profielfoto"></a>
 
 
         <label>Leeftijd: <%= data.age %> jaar</label>
@@ -38,7 +37,7 @@
         <!-- <label>Beste eigenschappen: Betrouwbaar, Behulpzaam, Doorzettingsvermogen, Vriendelijk & Eerlijk</label> -->
         <label>Woonplaats: <%= data.city %> </label>
 
-        <button> <a href="/detail"> Chat </a> </button>
+        <button> <a href="/detail/<%= data.id %>"> Chat </a> </button>
       </section>
       <% }) %>
        <!-- <section>

@@ -9,9 +9,8 @@
 </head>
 <body>
    <header>
-       <h1><a href="/profiel">Partners&Pets</a></h1>
+       <h1><a href="/profiel/<%= session.user.id %>">Partners&Pets</a></h1>
        <a href="/matches"><img src="../images/hartwit.png" alt="matches"></a>
-       <a href="/chat"><img src="../images/chaticon.png" alt="chat"></a>
        <img id="profile" src="../images/profileicon.png" alt="Profiel">
    </header>
    <div id="nav" class="dropdown">
@@ -22,7 +21,7 @@
     <main>
 
         <h2> <%= user.name %> </h2>
-        <img encytype="multipart/form-data" src="../uploads/<%= user.img %>" alt="profielfoto">
+        <img src="../uploads/<%= user.img %>" alt="profielfoto">
 
         <label>Leeftijd: <%= user.age %> jaar</label>
         <label>Geslacht: <%= user.gender %></label>

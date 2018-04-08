@@ -4,8 +4,8 @@ body {
     background-repeat: no-repeat;
 }
 
-img[src="images/girl.jpg"] {
-    width: 15rem;
+img {
+    max-width: 15rem;
     margin-left: 2.5rem;
 }
 
@@ -38,6 +38,7 @@ button {
     margin-right: auto;
     margin-top: 1em;
     margin-bottom: 1em;
+    color: white;
 }
 
 a {

@@ -11,7 +11,6 @@
     <header>
         <h1><a href="/profiel">Partners&Pets</a></h1>
         <a href="/matches"><img src="../images/hartwit.png" alt="matches"></a>
-        <a href="/chat"><img src="../images/chaticon.png" alt="chat"></a>
         <img id="profile" src="../images/profileicon.png" alt="Profiel">
     </header>
   <div id="nav" class="dropdown">
@@ -21,7 +20,7 @@
 
     <main>
       <h3> <%= data.name %> </h3>
-      <img class="profielfoto" src= '<%= data.photo %>' alt="profielfoto">
+      <img class="profielfoto" src= '../uploads/<%= data.img %>' alt="profielfoto">
 
       <label>Leeftijd: <%= data.age %> jaar</label>
       <label>Geslacht: <%= data.gender %></label>
@@ -39,10 +38,10 @@
 <% if (session && session.loggedIn) { %>
       <form class="chat" action="/chat" method="post">
         <label>
-          <input type="text" name="chatting" value="Hallo, hoe gaat het?">
+          <input class="chatbox" type="text" name="chatting" placeholder="Hallo, hoe gaat het?">
           <input type="hidden" name="me" value="<%= session.user.id %>">
           <input type="hidden" name="other" value="<%= data.id %>">
-          <input type="submit"value="Verstuur">
+          <input class="button" type="submit"value="Verstuur">
         </label>
 
       </form>
