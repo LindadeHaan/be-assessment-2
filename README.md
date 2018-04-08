@@ -1,4 +1,4 @@
-# be-assessment2
+# be-assessment-2
 
 ## Partners&Pets
 Partners&Pets is a datingsite for people who like (and have) pets. On this datingsite they kan find other people who are into pets. You are being matched by which pet you like and what you look for in partner.
