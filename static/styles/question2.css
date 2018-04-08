@@ -1,0 +1,23 @@
+body {
+    background-image: url(/images/vissen.png);
+}
+
+h2 {
+    font-family: "Nexa Bold", "Arial", sans-serif;
+    font-size: 20px;
+    text-align: center;
+}
+
+a.answer {
+    font-family: "Nexa Light", "Arial", sans-serif;
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: white;
+    background: red;
+    padding: 0.5rem;
+    border-radius: 0.3rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 1em 2em;
+}

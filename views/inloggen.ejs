@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles/dating.css">
+    <link rel="stylesheet" href="styles/register.css">
+    <title>Partners&Pets</title>
+</head>
+<body>
+   <header>
+       <h1><a href="/">Partners&Pets</a></h1>
+       <a href="/inloggen"><img src="images/hartwit.png" alt="machtes"></a>
+       <a href="/inloggen"><img src="images/chaticon.png" alt="chat"></a>
+       <img id="profile" src="images/profileicon.png" alt="Profiel">
+   </header>
+        <div id="nav" class="dropdown">
+          <a href="/inloggen">Profiel</a>
+          <a href="/inloggen">Login</a>
+        </div>
+
+   <main>
+
+       <form action="/profiel" method="POST">
+           <fieldset>Inloggen
+           <label>E-mailadres:
+           <input type="email" name="email" value ="luna@luna.nl"></label>
+           <label>Wachtwoord:
+           <input type="password" name="password" value="luna"></label>
+           <a href="/">Ik heb nog geen account</a>
+           <label>
+               <button type="submit">Inloggen</button>
+               </label>
+           </fieldset>
+       </form>
+   </main>
+
+<script src="../js/dropdown.js"></script>
+</body>
+</html>

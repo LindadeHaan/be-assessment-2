@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles/dating.css">
+    <link rel="stylesheet" href="styles/chat.css">
+    <title>Partners&Pets</title>
+</head>
+<body>
+   <header>
+       <h1><a href="/profiel">Partners&Pets</a></h1>
+       <a href="/matches"><img src="images/hartwit.png" alt="machtes"></a>
+       <a href="/chat"><img src="images/chaticon.png" alt="chat"></a>
+       <img id="profile" src="images/profileicon.png" alt="Profiel">
+   </header>
+   <div class="dropdown">
+     <a href="/profiel/<%= session.user.id%>">Profiel</a>
+     <a href="/logout">Log uit</a>
+   </div>
+
+    <main>
+
+    </main>
+
+<script src="../js/dropdown.js"></script>
+  </body>
+</html>

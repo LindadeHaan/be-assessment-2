@@ -1,0 +1,46 @@
+body {
+    background-image: url(/images/cats.png);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+img[src="images/girl.jpg"] {
+    width: 15rem;
+    margin-left: 2.5rem;
+}
+
+h2 {
+    font-family: "Nexa Bold", "Arial", sans-serif;
+    font-size: 1.2rem;
+    margin-left: 2.5rem;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+label {
+    font-family: "Nexa Light", "Arial", sans-serif;
+    font-size: 1rem;
+    display: block;
+    margin-left: 2.5rem;
+    margin-top: 1em;
+    margin-right: 2.5rem;
+    line-height: 1.2;
+}
+
+button {
+    font-family: "Nexa Bold", "Arial", sans-serif;
+    font-size: 1rem;
+    background-color: rgb(255, 0, 0);
+    padding: 0.5em;
+    border-radius: 0.5rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}

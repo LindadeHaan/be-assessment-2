@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/dating.css">
+    <link rel="stylesheet" href="../styles/profiel.css">
+    <title>Partners&Pets</title>
+</head>
+<body>
+   <header>
+       <h1><a href="/profiel">Partners&Pets</a></h1>
+       <a href="/matches"><img src="../images/hartwit.png" alt="matches"></a>
+       <a href="/chat"><img src="../images/chaticon.png" alt="chat"></a>
+       <img id="profile" src="../images/profileicon.png" alt="Profiel">
+   </header>
+   <div id="nav" class="dropdown">
+     <a href="/profiel/<%= session.user.id%>">Profiel</a>
+     <a href="/logout">Log uit</a>
+   </div>
+
+    <main>
+
+        <h2> <%= user.name %> </h2>
+        <img encytype="multipart/form-data" src="../uploads/<%= user.img %>" alt="profielfoto">
+
+        <label>Leeftijd: <%= user.age %> jaar</label>
+        <label>Geslacht: <%= user.gender %></label>
+        <label>Favoriete huisdier: <%= user.favpet %> </label>
+        <label>Huisdier?: <%= user.pet %></label>
+        <!-- <label>Beste eigenschappen: Betrouwbaar, Behulpzaam, Doorzettingsvermogen & Eerlijk</label> -->
+        <label>Woonplaats: <%= user.city %> <label>
+
+        <button><a href="/matches">Matches</a></button>
+        <button><a href="/updatePage">Profiel wijzigen</a></button>
+
+<button data-id="<%= session.user.id %>" id="deleteAccount">Verwijder mijn account</button>
+    </main>
+
+    <script src="../js/dropdown.js"></script>
+    <script src="../js/delete.js"></script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+body {
+    background-image: url("/images/horse1.png");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+/*==================
+    TESTVRAAG 1
+==================== */
+
+
+label.pets {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+
+.dieren {
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.vraag1{
+    position: absolute;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    margin-top: -4rem;
+} 
+
+form {
+    padding: 0.5em;
+}
+
+form fieldset {
+    font-family: "Nexa Bold", "Arial", sans-serif;
+    font-size: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: baseline;
+}
+
+form fieldset label{
+    font-family: "Nexa Light", "Arial", sans-serif; 
+    font-size: 1rem;
+    text-align: center;
+    margin-top: 1em;
+}
+
+main form fieldset input {
+    margin: auto;
+    border-radius: 0.5em;
+    padding: 0.25em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 1em;
+}
+
+fieldset button {
+    background-color: rgb(255, 0, 0);
+    font-family: "Nexa Bold", "Arial", sans-serif;
+    font-size: 18px;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}

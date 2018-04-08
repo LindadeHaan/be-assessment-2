@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles/dating.css">
+    <link rel="stylesheet" href="styles/matches.css">
+    <title>Partners&Pets</title>
+</head>
+
+<body>
+   <header>
+       <h1><a href="/profiel">Partners&Pets</a></h1>
+       <a href="/matches"><img src="images/hartwit.png" alt="matches"></a>
+       <a href="/chat"><img src="images/chaticon.png" alt="chat"></a>
+      <% if (session && session.loggedIn) { %>
+       <img id="profile" src="images/profileicon.png" alt="Profiel">
+       <% } %>
+   </header>
+   <div id="nav" class="dropdown">
+     <a href="/profiel/<%= session.user.id%>">Profiel</a>
+     <a href="/logout">Log uit</a>
+   </div>
+
+   <main>
+
+       <h2>Matches</h2>
+<% data.forEach(function(data){ %>
+       <section>
+          <h3> <%= data.name %> </h3>
+          <a href="/detail/<%= data.id %>"><img class="profielfoto" src=' <%= data.photo %>' alt="profielfoto"></a>
+
+
+        <label>Leeftijd: <%= data.age %> jaar</label>
+        <label>Geslacht: <%= data.gender %></label>
+        <label>Favoriete huisdier: <%= data.favpet %></label>
+        <label>Huisdier?: <%= data.pet %> </label>
+        <!-- <label>Beste eigenschappen: Betrouwbaar, Behulpzaam, Doorzettingsvermogen, Vriendelijk & Eerlijk</label> -->
+        <label>Woonplaats: <%= data.city %> </label>
+
+        <button> <a href="/detail"> Chat </a> </button>
+      </section>
+      <% }) %>
+       <!-- <section>
+          <h3>James Verhagen</h3>
+           <img src="images/model.jpg" alt="James Verhagen">
+
+        <label>Leeftijd: 23 jaar</label>
+        <label>Favoriete huisdier: Paard</label>
+        <label>Huidig huisdier: Paard</label>
+        <label>Beste eigenschappen: Betrouwbaar, Behulpzaam, Doorzettingsvermogen, Vriendelijk & Eerlijk</label>
+        <label>Afstand vanaf jou: 12km</label>
+
+        <button> <a href="/chat"> Bericht sturen </a> </button>
+
+       </section>
+
+       <section>
+          <h3>James Verhagen</h3>
+           <img src="images/model.jpg" alt="James Verhagen">
+
+        <label>Leeftijd: 23 jaar</label>
+        <label>Favoriete huisdier: Paard</label>
+        <label>Huidig huisdier: Paard</label>
+        <label>Beste eigenschappen: Betrouwbaar, Behulpzaam, Doorzettingsvermogen, Vriendelijk & Eerlijk</label>
+        <label>Afstand vanaf jou: 12km</label>
+
+        <button> <a href="/chat"> Bericht sturen </a> </button>
+
+       </section> -->
+
+
+
+   </main>
+<script src="../js/dropdown.js"></script>
+</body>
+</html>

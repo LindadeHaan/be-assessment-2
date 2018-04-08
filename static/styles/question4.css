@@ -1,0 +1,39 @@
+body {
+    background-image: url("/images/vogel.png");
+    
+}
+
+fieldset {
+    font-family: "Nexa Bold", "Arial", sans-serif;
+    font-size: 20px;
+    text-align: center;
+}
+
+fieldset label {
+    font-family: "Nexa Light", "Arial", sans-serif;
+    font-size: 1em;
+    text-align: left;
+    display: block;
+    margin: 1em 0
+}
+
+fieldset label input {
+    margin-left: 1.5rem;
+    margin-right: 4rem;
+}
+
+button {
+    background-color: rgb(255, 0, 0);
+    font-family: "Nexa Bold", "Arial", sans-serif;
+    font-size: 18px;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+button a {
+    text-decoration: none;
+    color: white;
+}
