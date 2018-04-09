@@ -7,6 +7,10 @@ To register for this datingsite you have to fill in a form with your information
 
 When you filled in the form to register, at the moment, you only get matched with the people who have the gender you prefer as a partner.
 
+### Explaining Partners&Pets
+
+![Index Page]()
+
 ## Install Partners&Pets
 To install Partners&Pets you have to follow a few steps:
 
@@ -141,6 +145,6 @@ DELETE FROM table_name WHERE id = id_number
 - [x] Show the gender users filled in as preferred gender as matches.
 - [x] Add MySQL
 - [x] Add license
-
+- [ ] Hash passwords
 ## License
 [MIT](https://github.com/LindadeHaan/be-assessment-2/blob/master/LICENSE)
