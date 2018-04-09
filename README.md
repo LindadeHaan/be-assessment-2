@@ -9,7 +9,7 @@ When you filled in the form to register, at the moment, you only get matched wit
 
 ### Explaining Partners&Pets
 
-![Index Page]()
+![Index Page](site_images/index.png)
 
 ## Install Partners&Pets
 To install Partners&Pets you have to follow a few steps:
