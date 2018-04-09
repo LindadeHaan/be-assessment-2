@@ -18,26 +18,25 @@ On the register page, user can register for the datingsite. They fill in their i
 <img src="site_images/register2.png" width="250">
 <img src="site_images/register3.png" width="250">
 
-On the login page user can login to their profile.
-
+On the login page user can login to their profile.  
 <img src="site_images/login.png" width="250">
 
-On the profile page users can see the information they filled in, in the register form.
+On the profile page users can see the information they filled in, in the register form.  
 <img src="site_images/profile.png" width="250">
 
-On the update page users can update some of their information en save this. The information they changed also changed on their profile page.
+On the update page users can update some of their information en save this. The information they changed also changed on their profile page.  
 <img src="site_images/update.png" width="250">
 
 On the matches page user can see other users who might be interesting for them to talk to.
 The can go to the detail page of one match or they can click on the chat button and communicate immediately with the other user.
 <img src="site_images/matches.png" width="250">
 
-On the detail page of one of the matches, user can see the information an other user filled in, in the register form. On the detail page is an oppotunity to chat with the other user.
+On the detail page of one of the matches, user can see the information an other user filled in, in the register form. On the detail page is an oppotunity to chat with the other user.  
 <img src="site_images/detail1.png" width="250">
 <img src="site_images/detail2.png" width="250">
 
 On every page the user can click on the profile icon. When the user clicks on the profile icon, there is a dropdown menu with two options. Profile and logout. The user can go to their profile and logout at any time they want.
-When te user is not logged in on the site, the log-out button becomes the log-in button.
+When te user is not logged in on the site, the log-out button becomes the log-in button.  
 <img src="site_images/matches2.png" width="250">
 
 
