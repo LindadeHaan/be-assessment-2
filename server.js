@@ -5,8 +5,11 @@
 
 'use strict'
 
+// This console.log is to see if the server is starting.
 console.log('server is starting')
 
+// Here I require the packages I used.
+// I first installed these in my terminal with npm install package_name
 var express = require('express')
 var ejs = require('ejs')
 var bodyParser = require('body-parser')
@@ -18,33 +21,54 @@ var mysql = require('mysql')
 var session = require('express-session')
 var app = express()
 
+// app.get is that you get something back from the browser.
+// All the routes will be typed like this: localhost:3000/form .
+// So if you type that in your browser, you will use an app.get('/form', ...).
+// When something like that happens, a function will be executed,
+// the function after the route so: app.get('/form', profile)
+// This is for all the app.get's under here.
+
+// You need app.post to post your information you fill in, in forms to post to the database.
+
+// EJS
 app.set('view engine', 'ejs')
+// Folder views
 app.set('views', 'views')
+// Static folder, I can use files from the static folder now.
 app.use(express.static('static'))
 app.use(bodyParser.urlencoded({
   extended: true
 }))
+//
 app.use(session({
   secret: 'hoihoi',
   resave: false,
   saveUninitialized: false
 }))
-app.post('/profiel', handleLogin)
-app.post('/register', upload.single('img'), handleRegister)
+// Makes it possible to log in.
+app.post('/profile', handleLogin)
+// Makes it possible to register and upload an image as a profile picture.
+app.post('/registerUser', upload.single('img'), handleRegister)
+// Makes it possible to chat with users.
 app.post('/chat', saveMessage)
 app.post('/update/:id', update)
+// Makes it possible to delete an account.
 app.delete('/delete/:id', deleteAccount)
-app.get('/profiel/:id', profile)
-app.get('/inloggen', login)
+app.get('/profile/:id', profile)
+app.get('/login', login)
 app.get('/logout', logout)
 app.get('/updatePage', updatePage)
 app.get('/detail/:id', detail)
 app.get('/matches', matches)
 app.get('/detail', chat)
-app.get('/registreren', renderForm)
+app.get('/register', renderForm)
 app.get('/', listening)
 app.listen(3000)
 
+// This part is used to connect the server.js with MySQL
+// Host = the host for your server
+// User = the username for MySQL
+// Database = the name of your database
 var connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
@@ -53,6 +77,9 @@ var connection = mysql.createConnection({
 })
 connection.connect()
 
+// This array contains the names and images of the choice users can make at the first question under the register form.
+// I can use this array in my ejs templates by using a forEach loop and <%= data.img %> and <%= data.name %> at the places
+// where the images and names are supposed to be.
 var data = [{
     img: 'images/dog.png',
     namePet: 'Hond'
@@ -91,28 +118,47 @@ var data = [{
   }
 ]
 
+// Function to render the index page.
 function listening(req, res) {
-  console.log('listening....')
-  console.log(req.session)
   res.render('index.ejs')
 }
 
+// Function to render the profile page of the user that is logged in.
+// With the SELECT * FROM profiles WHERE id = ?', id line the ejs template and server.js get the data from my database where the id is the same as the id of the user that is logged in.
+// If there is an error, you get redirected to error.ejs.
+// If everything goes fine, you get the profle.ejs file.
+// var locals contains al the local variables that we to the template.
+// req.session is used when a user is logged in. Session makes it possible to get users to stay logged in.
 function profile(req, res) {
   var id = req.params.id
   connection.query('SELECT * FROM profiles WHERE id = ?', id, function(err, users) {
-    if (err) throw err
+    if (err) {
+      // Account could not be found
+      // 404 account not found
+      return res.status(404).render('error.ejs', {
+        id: 404,
+        description: "page not found",
+        map: "../"
+      })
+    }
     var user = users[0]
     var locals = {
       user: user,
       session: req.session,
     }
-    console.log(locals)
-    // locals heet zo, omdat het alles local variable bevat
-    res.render('profiel.ejs', locals)
+    res.render('profile.ejs', locals)
   })
 }
-// Inspiratie en bron: Deanna: https://github.com/deannabosschert/freshstart/blob/master/index.js en Titus: https://github.com/cmda-be/course-17-18/blob/master/examples/mysql-server/index.js
-function handleRegister(req, res, next) {
+// Inspiratie en bron: Deanna: https://github.com/deannabosschert/freshstart/blob/master/index.js en
+// Titus: https://github.com/cmda-be/course-17-18/blob/master/examples/mysql-server/index.js
+// This function handles the register page.
+// This is where you add an user to your database.
+// When the user has filled in the form and clicks submit, the user is added to the database.
+// The words like img, id, name, etc. are properties.
+// Those properties are the same as the names of the columns in the database.
+// When all the properties are filled in, the user gets redirected to the log in page.
+// When the something is not filed in that is required, the server renders the error.ejs file.
+function handleRegister(req, res) {
   connection.query('INSERT INTO profiles SET ?', {
     img: req.file ? req.file.filename : null,
     id: req.body.id,
@@ -129,17 +175,24 @@ function handleRegister(req, res, next) {
 
   function done(err, data) {
     if (err) {
-      next(err)
+      return res.status(404).render('error.ejs', {
+        id: 404,
+        description: "page not found",
+        map: "../"
+      })
     } else {
-      res.redirect('/inloggen')
+      res.redirect('/login')
     }
   }
 }
 
+// This function renders the login.ejs file
 function login(req, res) {
-  res.render('inloggen.ejs')
+  res.render('login.ejs')
 }
 
+// In this function, if the user logs out, the session gets destroyed.
+// When the user succesfully logs out, the user gets redirected to the index page.
 function logout(req, res) {
   if (req.session) {
     req.session.destroy(function(err) {
@@ -156,31 +209,35 @@ function logout(req, res) {
   }
 }
 
+// Function to check the log in information of the users
+// When you email and password are correct, the user gets redirected to their own profile.
+// When the email and password aren't correct, the user gets redirected to the same page: the log in page.
 function handleLogin(req, res) {
   var body = Object.assign({}, req.body)
   connection.query('SELECT * FROM profiles WHERE email = ?', body.email, function(err, users) {
     if (err) throw err;
     var user = users[0]
-    // dit moet gebeuren als alles correct is bij inloggen
+    // This needs to happen if everything goes correct when users log in.
     if (user && user.password === body.password) {
       req.session.loggedIn = true
-      // weet welke gebruiker ingelogd is
+      // You know which user is logged in.
       req.session.user = user
-      res.redirect('/profiel/' + users[0].id)
+      res.redirect('/profile/' + users[0].id)
     } else {
-      res.render('inloggen.ejs')
+      res.render('login.ejs')
     }
   })
 }
 
+// This function is to render the page where users can see their matches.
+// The if else statement makes it possible to filter the preferred genders of the users.
 function matches(req, res, users) {
   var user = users[0]
-  console.log('filter matches')
   if (req.session.user.preferredGender == 'female') {
-    // selecteer iedereen met gender male
+    // Select everyone with gender: male
     connection.query("SELECT * FROM profiles WHERE gender = 'female'", onDone)
   } else {
-    // selecteer iedereen met gender female
+    // Select everyone with gender: female
     connection.query("SELECT * FROM profiles WHERE gender = 'male'", onDone)
   }
 
@@ -188,7 +245,6 @@ function matches(req, res, users) {
     if (err || data.length === 0) {
       //account niet kunnen vinden
       //404 account not found
-      console.log("Matches Error: ", err)
       return res.status(404).render('error.ejs', {
         id: 404,
         description: "page not found",
@@ -204,6 +260,8 @@ function matches(req, res, users) {
   }
 }
 
+// This function renders the detail.ejs template if a user clicks on the chat button on the matches page.
+// In var locals, messages id defined because on the profile their is a chat option.
 function chat(req, res) {
   var id = req.params.id
   connection.query('SELECT * FROM profiles', id, onDone)
@@ -212,7 +270,6 @@ function chat(req, res) {
     if (err || data.length === 0) {
       //account niet kunnen vinden
       //404 account not found
-      console.log("Chat Error: ", err)
       return res.status(404).render('error.ejs', {
         id: 404,
         description: "page not found",
@@ -229,16 +286,28 @@ function chat(req, res) {
   }
 }
 
+// This function renders the register.ejs template.
+// data: data is defined, because I use images for the animals in the first question on the index page.
 function renderForm(req, res) {
   res.render('register.ejs', {
     data: data
   })
 }
 
+// This function render the detail page. That is the profile of someone else.
+//
 function detail(req, res) {
   var id = req.params.id
   connection.query('SELECT * FROM profiles WHERE id = ?', id, function(err, users) {
-    if (err) throw err
+    if (err) {
+      //account niet kunnen vinden
+      //404 account not found
+      return res.status(404).render('error.ejs', {
+        id: 404,
+        description: "page not found",
+        map: "../"
+      })
+    }
     var user = users[0]
     connection.query('SELECT * FROM messages WHERE me = ? AND other = ? OR me = ? AND other = ?', [
       req.session.user.id,
@@ -246,7 +315,15 @@ function detail(req, res) {
       req.params.id,
       req.session.user.id
     ], function(err, messages) {
-      if (err) throw err
+      if (err) {
+        //account niet kunnen vinden
+        //404 account not found
+        return res.status(404).render('error.ejs', {
+          id: 404,
+          description: "page not found",
+          map: "../"
+        })
+      }
       var locals = {
         data: user,
         messages: messages,
@@ -257,6 +334,15 @@ function detail(req, res) {
   })
 }
 
+// req.body get everything what has been filled in in the form.
+// Object.assign makes it an object.
+// This is where you add messages to your database.
+// When the user has send a message to someone the message is added to the database.
+// The words chatting, me and other are properties.
+// Those properties are the same as the names of the columns in the database.
+// When a message is send, the user is redirected to the same page. But you can see message you just send.
+// When the something is not filed in that is required, the server renders the error.ejs file.
+// + body.other adds the message to the body.
 function saveMessage(req, res) {
   var body = Object.assign({}, req.body)
   connection.query('INSERT INTO messages SET ?', {
@@ -265,10 +351,9 @@ function saveMessage(req, res) {
     other: req.body.other,
   }, done)
 
-  //Bron: titus github & Nina
+  // Source: titus github & Nina
   function done(err, data) {
     if (err) {
-      console.log(err)
       return res.status(404).render('error.ejs', {
         id: 404,
         description: err,
@@ -280,16 +365,24 @@ function saveMessage(req, res) {
   }
 }
 
+// req.params.id gets the id from the user.
+// from the request you get the parameters and from there the id
 function deleteAccount(req, res) {
-  var id = req.params.id //params haalt de id van de gebruiker
+  var id = req.params.id
   connection.query('DELETE FROM profiles WHERE id = ?', id, function(err, users) {
-    if (err) throw err
+    if (err) {
+      return res.status(404).render('error.ejs', {
+        id: 404,
+        description: "page not found",
+        map: "../"
+      })
+    }
     res.redirect('/')
   })
 }
 
+
 function updatePage(req, res) {
-  console.log("open update.ejs")
   var id = req.params.id
   connection.query("SELECT * FROM profiles", function(err, data) {
     var locals = {
@@ -300,18 +393,37 @@ function updatePage(req, res) {
   })
 }
 
+// Because all of the names of the columns are in the connection.query,
+// a user can change the information they filled in when they registered for the site.
+
 function update(req, res) {
   var id = req.params.id
   var body = req.body
-  connection.query("UPDATE profiles SET name = ?, email = ?, age = ?, gender = ?, password = ?, preferredGender = ?, city = ?, favpet = ?, pet = ? WHERE id = ?", [body.name, body.email, body.age, body.gender, body.password, body.preferredGender, body.city, body.favpet, body.pet, id], done)
+  connection.query("UPDATE profiles SET name = ?, email = ?, age = ?, gender = ?, password = ?, preferredGender = ?, city = ?, favpet = ?, pet = ? WHERE id = ?", [
+    body.name,
+    body.email,
+    body.age,
+    body.gender,
+    body.password,
+    body.preferredGender,
+    body.city,
+    body.favpet,
+    body.pet,
+    id
+  ], done)
 
   function done(err, data) {
-    if (err) throw err
-    console.log("Inserted!")
+    if (err) {
+      return res.status(404).render('error.ejs', {
+        id: 404,
+        description: "page not found",
+        map: "../"
+      })
+    }
     var locals = {
       data: data,
       session: req.session
     }
-    res.redirect("/profiel/" + req.session.user.id)
+    res.redirect("/profile/" + req.session.user.id)
   }
 }

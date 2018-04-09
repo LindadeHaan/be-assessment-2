@@ -50,7 +50,7 @@
   overflow: hidden;
 }
 
-.chat .user-photo img{
+.chat .user-photo img {
   width: 140%;
 }
 
@@ -115,7 +115,6 @@
   margin: 0 10px;
   box-shadow: 0 3px 0 rgb(210, 210, 210);
   cursor: pointer;
-
   -webkit-transition: backgrond .2s ease;
   -moz-transition: background .2s ease;
   -o-transition: background .2s ease;

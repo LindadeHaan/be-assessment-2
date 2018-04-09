@@ -11,12 +11,12 @@
 <body>
 
   <header>
-    <h1><a href="/">Partners&Pets</a></h1>
-    <a href="/inloggen"><img src="images/hartwit.png" alt="matches"></a>
+    <h1><a href="/profiel/<%= session.user.id %>">Partners&Pets</a></h1>
+    <a href="/matches"><img src="images/hartwit.png" alt="matches"></a>
     <img id="profile" src="images/profileicon.png" alt="Profiel">
   </header>
   <div id="nav" class="dropdown">
-    <a href="/profiel//<%= session.user.id %>">Profiel</a>
+    <a href="/profile/<%= session.user.id %>">Profiel</a>
     <a href="/logout">Log uit</a>
   </div>
 

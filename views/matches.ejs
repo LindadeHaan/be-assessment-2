@@ -1,33 +1,34 @@
 <!DOCTYPE html>
 <html>
-  <head>
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="styles/dating.css">
-    <link rel="stylesheet" href="styles/matches.css">
-    <title>Partners&Pets</title>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="styles/dating.css">
+  <link rel="stylesheet" href="styles/matches.css">
+  <title>Partners&Pets</title>
 </head>
 
 <body>
-   <header>
-       <h1><a href="/profiel">Partners&Pets</a></h1>
-       <a href="/matches"><img src="images/hartwit.png" alt="matches"></a>
-      <% if (session && session.loggedIn) { %>
-       <img id="profile" src="images/profileicon.png" alt="Profiel">
-       <% } %>
-   </header>
-   <div id="nav" class="dropdown">
-     <a href="/profiel/<%= session.user.id%>">Profiel</a>
-     <a href="/logout">Log uit</a>
-   </div>
+  <header>
+    <h1><a href="/profile/<%= session.user.id %>">Partners&Pets</a></h1>
+    <a href="/matches"><img src="images/hartwit.png" alt="matches"></a>
+    <% if (session && session.loggedIn) { %>
+      <img id="profile" src="images/profileicon.png" alt="Profiel">
+      <% } %>
+  </header>
+  <div id="nav" class="dropdown">
+    <a href="/profile/<%= session.user.id%>">Profiel</a>
+    <a href="/logout">Log uit</a>
+  </div>
 
-   <main>
+  <main>
 
-       <h2>Matches</h2>
-<% data.forEach(function(data){ %>
-       <section>
-          <h3> <%= data.name %> </h3>
-          <a href="/detail/<%= data.id %>"><img class="profielfoto" src="../uploads/<%= data.img %>" alt="profielfoto"></a>
+    <h2>Matches</h2>
+    <% data.forEach(function(data){ %>
+      <section>
+        <h3> <%= data.name %> </h3>
+        <a href="/detail/<%= data.id %>"><img class="profielfoto" src="../uploads/<%= data.img %>" alt="profielfoto"></a>
 
 
         <label>Leeftijd: <%= data.age %> jaar</label>
@@ -40,7 +41,7 @@
         <button> <a href="/detail/<%= data.id %>"> Chat </a> </button>
       </section>
       <% }) %>
-       <!-- <section>
+        <!-- <section>
           <h3>James Verhagen</h3>
            <img src="images/model.jpg" alt="James Verhagen">
 
@@ -70,7 +71,8 @@
 
 
 
-   </main>
-<script src="../js/dropdown.js"></script>
+  </main>
+  <script src="../js/dropdown.js"></script>
 </body>
+
 </html>

@@ -12,22 +12,22 @@
 <body>
   <header>
     <h1><a href="/">Partners&Pets</a></h1>
-    <a href="/inloggen"><img src="images/hartwit.png" alt="machtes"></a>
+    <a href="/login"><img src="images/hartwit.png" alt="machtes"></a>
     <img id="profile" src="images/profileicon.png" alt="Profiel">
   </header>
   <div id="nav" class="dropdown">
-    <a href="/inloggen">Profiel</a>
-    <a href="/inloggen">Login</a>
+    <a href="/login">Profiel</a>
+    <a href="/login">Login</a>
   </div>
 
   <main>
-<form action="/register" method="POST" enctype="multipart/form-data">
+    <form action="/registerUser" method="POST" enctype="multipart/form-data">
 
-    <section>
+      <section>
         <fieldset>Registreren
           <label>Naam:
            <input type="name" name="name" required></label>
-           <label>Profielfoto:
+          <label>Profielfoto:
           <input type="file" name="img" accept="image/*"></label>
           <label> Leeftijd:
            <input type="number" name="age" required></label>
@@ -47,36 +47,36 @@
           <label>Ik ben op zoek naar een:
            <input class="box" type="checkbox" name="preferredGender" value="male">Man
            <input class="box" type="checkbox" name="preferredGender" value="female">Vrouw</label>
-          <a href="/inloggen">Ik heb al een account</a>
+          <a href="/login">Ik heb al een account</a>
 
         </fieldset>
-    </section>
+      </section>
 
 
-    <section>
+      <section>
         <fieldset>Vraag 1: Wat is jouw favoriete huisdier?
-<% data.forEach(function(data){ %>
-          <label class="pets"><input class="vraag1" type="checkbox" name="favpet" value="<%= data.namePet %>"><img class="dieren" src="<%= data.img %>" alt="dog"> <%= data.namePet %> </label>
-<% }) %>
+          <% data.forEach(function(data){ %>
+            <label class="pets"><input class="vraag1" type="checkbox" name="favpet" value="<%= data.namePet %>"><img class="dieren" src="<%= data.img %>" alt="dog"> <%= data.namePet %> </label>
+            <% }) %>
 
         </fieldset>
-    </section>
+      </section>
 
-    <section>
-      <h2>Vraag 2: Heb je op dit moment een huisdier?</h2>
+      <section>
+        <h2>Vraag 2: Heb je op dit moment een huisdier?</h2>
 
-      <label class="q2"><input type="radio" name="pet" value="Ja" checked="checked"> Ja
+        <label class="q2"><input type="radio" name="pet" value="Ja" checked="checked"> Ja
                         <input type="radio" name="pet" value="Nee"> Nee </label>
-    </section>
+      </section>
 
 
 
 
-    <button type="submit" value="verstuur">Volgende</button>
-  </form>
+      <button type="submit" value="verstuur">Volgende</button>
+    </form>
   </main>
 
-<script src="../js/dropdown.js"></script>
+  <script src="../js/dropdown.js"></script>
 </body>
 
 </html>

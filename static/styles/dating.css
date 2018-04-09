@@ -2,95 +2,14 @@
   License: none (public domain)
 */
 
-html,
-body,
-div,
-span,
-applet,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-a,
-abbr,
-acronym,
-address,
-big,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-b,
-u,
-i,
-center,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-embed,
-figure,
-figcaption,
-footer,
-header,
-hgroup,
-menu,
-nav,
-output,
-ruby,
-section,
-summary,
-time,
-mark,
-audio,
-video {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
-
 
 /* HTML5 display-role reset for older browsers */
 
@@ -99,38 +18,40 @@ video {
 ==================== */
 
 header {
-    background-color: rgb(255, 0, 0);
-    width: 100%;
+  background-color: rgb(255, 0, 0);
+  width: 100%;
 }
 
 h1 {
-    font-family: "Nexa Bold", "Arial", sans-serif;
-    color: white;
-    padding: 1em 0 1em 0;
-    display: inline-block;
-    margin-left: 6rem;
+  font-family: "Nexa Bold", "Arial", sans-serif;
+  color: white;
+  padding: 1em 0 1em 0;
+  display: inline-block;
+  margin-left: 6rem;
 }
-h1 a {
-    text-decoration: none;
-    color: white;
-    font-size: 18px;
-}
-header a:first-of-type img{
-    width: 2.3rem;
-    margin-top: 0.7rem;
-    margin-left: 0.5rem;
-    float: left;
 
+h1 a {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+}
+
+header a:first-of-type img {
+  width: 2.3rem;
+  margin-top: 0.7rem;
+  margin-left: 0.5rem;
+  float: left;
 }
 
 header img:last-of-type {
-    width: 2rem;
-    margin-top: 0.7rem;
-    margin-bottom: -2rem;
-    margin-left: 2rem;
-    margin-right: 2%;
-    float: right;
+  width: 2rem;
+  margin-top: 0.7rem;
+  margin-bottom: -2rem;
+  margin-left: 2rem;
+  margin-right: 2%;
+  float: right;
 }
+
 div.dropdown {
   right: 0;
   top: 2.2rem;
@@ -159,17 +80,17 @@ div a:hover {
 }
 
 main {
-    background-color: rgba(210, 210, 210, 0.7);
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 2rem;
-    border-radius: 0.15rem;
-    padding: 0.5rem;
-    width: 20rem;
+  background-color: rgba(210, 210, 210, 0.7);
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2rem;
+  border-radius: 0.15rem;
+  padding: 0.5rem;
+  width: 20rem;
 }
 
 button a {
-    text-decoration: none;
-    color: white;
-    font-size: 18px;
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
 }

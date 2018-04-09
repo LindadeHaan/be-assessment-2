@@ -5,8 +5,8 @@
 }
 
 body {
-    background-image: url(/images/dog1.png);
-    background-attachment: fixed;
+  background-image: url(/images/dog1.png);
+  background-attachment: fixed;
 }
 
 /* ==================
@@ -21,73 +21,73 @@ body {
 } */
 
 a[href=/profiel] {
-    text-decoration: none;
-    color: white;
-    font-size: 18px;
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
 }
 
 form {
-    padding: 0.5em;
+  padding: 0.5em;
 }
 
 form fieldset {
-    font-family: "Nexa Bold", "Arial", sans-serif;
-    font-size: 20px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: baseline;
+  font-family: "Nexa Bold", "Arial", sans-serif;
+  font-size: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: baseline;
 }
 
-form fieldset label{
-    font-family: "Nexa Light", "Arial", sans-serif;
-    font-size: 1rem;
-    text-align: center;
-    margin-top: 1em;
+form fieldset label {
+  font-family: "Nexa Light", "Arial", sans-serif;
+  font-size: 1rem;
+  text-align: center;
+  margin-top: 1em;
 }
 
 main form fieldset input {
-    margin: auto;
-    border-radius: 0.5em;
-    padding: 0.25em;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-bottom: 1em;
+  margin: auto;
+  border-radius: 0.5em;
+  padding: 0.25em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 1em;
 }
 
 main form fieldset input:invalid {
-    background: rgba(255, 0, 0, 0.1);
+  background: rgba(255, 0, 0, 0.1);
 }
 
 input.box {
-    display: inline-block;
+  display: inline-block;
 }
 
 button {
-    background-color: rgb(255, 0, 0);
-    font-family: "Nexa Bold", "Arial", sans-serif;
-    font-size: 18px;
-    padding: 0.5rem;
-    border-radius: 0.5rem;
-    margin-left: 7rem;
-    color: white;
+  background-color: rgb(255, 0, 0);
+  font-family: "Nexa Bold", "Arial", sans-serif;
+  font-size: 18px;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  margin-left: 7rem;
+  color: white;
 }
 
 input[type="checkbox"] {
-    margin-right: 0.3em;
+  margin-right: 0.3em;
 }
 
 input[type="radio"] {
-    margin-right: 0.3em;
+  margin-right: 0.3em;
 }
 
 label input[type="date"] {
-    width: 7.9rem;
+  width: 7.9rem;
 }
 
-section{
+section {
   background: rgba(160, 160, 160, 0.8);
   padding: 0.5rem;
   margin: 1rem 1rem 3rem 1rem;
@@ -95,92 +95,91 @@ section{
 
 /* VRAAG 1 */
 
-label.pets{
-    display: flex;
-    justify-content: flex-end;
-    flex-direction: column;
-    flex-wrap: wrap;
+label.pets {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
-
 
 .dieren {
-    width: 40%;
-    margin-left: auto;
-    margin-right: auto;
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.vraag1{
-    position: absolute;
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: row;
-    margin-top: -4rem;
+.vraag1 {
+  position: absolute;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  margin-top: -4rem;
 }
 
 form.q1 {
-    padding: 0.5em;
+  padding: 0.5em;
 }
 
 form fieldset.q1 {
-    font-family: "Nexa Bold", "Arial", sans-serif;
-    font-size: 20px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: baseline;
+  font-family: "Nexa Bold", "Arial", sans-serif;
+  font-size: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: baseline;
 }
 
-form fieldset label.q1{
-    font-family: "Nexa Light", "Arial", sans-serif;
-    font-size: 1rem;
-    text-align: center;
-    margin-top: 1em;
+form fieldset label.q1 {
+  font-family: "Nexa Light", "Arial", sans-serif;
+  font-size: 1rem;
+  text-align: center;
+  margin-top: 1em;
 }
 
 main form fieldset input.q1 {
-    margin: auto;
-    border-radius: 0.5em;
-    padding: 0.25em;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-bottom: 1em;
+  margin: auto;
+  border-radius: 0.5em;
+  padding: 0.25em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 1em;
 }
 
 fieldset button.q1 {
-    background-color: rgb(255, 0, 0);
-    font-family: "Nexa Bold", "Arial", sans-serif;
-    font-size: 18px;
-    padding: 0.5rem;
-    border-radius: 0.5rem;
+  background-color: rgb(255, 0, 0);
+  font-family: "Nexa Bold", "Arial", sans-serif;
+  font-size: 18px;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
 }
 
 /* VRAAG 2 */
 
 h2 {
-    font-family: "Nexa Bold", "Arial", sans-serif;
-    font-size: 20px;
-    text-align: center;
+  font-family: "Nexa Bold", "Arial", sans-serif;
+  font-size: 20px;
+  text-align: center;
 }
 
 a.answer {
-    font-family: "Nexa Light", "Arial", sans-serif;
-    font-size: 1.5rem;
-    text-decoration: none;
-    color: white;
-    background: red;
-    padding: 0.5rem;
-    border-radius: 0.3rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    margin: 1em 2em;
+  font-family: "Nexa Light", "Arial", sans-serif;
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: white;
+  background: red;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: 1em 2em;
 }
 
 /* VRAAG 3 */
 
-label.q2{
+label.q2 {
   font-family: "Nexa Bold", "Arial", sans-serif;
   font-size: 1.5rem;
   margin-left: 4.5rem;
