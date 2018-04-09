@@ -9,26 +9,33 @@ When you filled in the form to register, at the moment, you only get matched wit
 
 ### Explaining Partners&Pets
 On the index page is an explanation about the site. It contains what the site is for and a little bit about how it works.
+From the index page you can go to the log-in page and register page. You can only get to those pages, because the user is nog logged in yet or they don't have an account yet. And when you are not logged in or do not have an account, you can't get to your matches or your own profile.  
 <img src="site_images/index.png" width="250">
 
 
 
 On the register page, user can register for the datingsite. They fill in their information en click on the button on the bottom of the page. On this page are two questions users have to answer about the pets they like.
+The only page you can navigate to, when you are on the register page, is the log-in page. Anywhere you can navigate to another page you go to the log-in page, because you are not registered or logged in yet.  
 <img src="site_images/register1.png" width="250">
 <img src="site_images/register2.png" width="250">
 <img src="site_images/register3.png" width="250">
 
-On the login page user can login to their profile.  
+On the login page user can login to their profile. 
+Anywhere you click on this page navigates to the log-in page. So you stay on the same page when you click somewhere else.
+But when you click on the name of the datingsite in the middle at the top of the page you go to the index page. From there you can navigate to the register page and the log-in page.  
 <img src="site_images/login.png" width="250">
 
-On the profile page users can see the information they filled in, in the register form.  
+On the profile page users can see the information they filled in, in the register form.
+From the profile page, users can navigate to the matches page, update page and they can delete their account.
+Users can also log-out from this page.  
 <img src="site_images/profile.png" width="250">
 
 On the update page users can update some of their information en save this. The information they changed also changed on their profile page.  
+When users want to navigate to a different page while they are filling in the update form, the don't change their information because they did not submit their information.  
 <img src="site_images/update.png" width="250">
 
 On the matches page user can see other users who might be interesting for them to talk to.
-The can go to the detail page of one match or they can click on the chat button and communicate immediately with the other user.
+The can go to the detail page of one match or they can click on the chat button and communicate immediately with the other user.  
 <img src="site_images/matches.png" width="250">
 
 On the detail page of one of the matches, user can see the information an other user filled in, in the register form. On the detail page is an oppotunity to chat with the other user.  
@@ -138,7 +145,7 @@ Between those two lines you can declare your table columns. Most of the time tho
 How to instert something into a table:
 ```
 INSERT INTO profiles (column_name1, column_name2, column_name3, column_name4, column_name5) VALUES (
-    ‘value1',
+    'value1',
     'value2',
     'value3',
     ‘value4’,
