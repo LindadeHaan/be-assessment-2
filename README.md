@@ -46,8 +46,11 @@ When te user is not logged in on the site, the log-out button becomes the log-in
 
 ## Install Partners&Pets
 To install Partners&Pets you have to follow a few steps:
- 
-Use cd in your terminal to get to the place where you want to install on you computer.
+
+You need to change directory in your terminal first to the folder where you want to install everything. 
+Use `cd` in your terminal to get to the place where you want to install on you computer.  
+Example:
+`cd folder_name`
  
 To clone the repository
 ```
