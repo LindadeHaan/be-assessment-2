@@ -39,7 +39,13 @@ app.use(express.static('static'))
 app.use(bodyParser.urlencoded({
   extended: true
 }))
-//
+// secret = the key that will be used for the encryption of all the cookies
+// resave saves the cookies everytime. If it is true, it wil overwrite,
+// If that is false, than it won't overwrite all the time
+// Otherwise you would have a lot of data traffic.
+// saveUninitialized = makes sure that there are no unnecessary sessions
+// False = only when a user logs in you want a session
+// True = unnecessary sessions
 app.use(session({
   secret: 'hoihoi',
   resave: false,
@@ -240,7 +246,8 @@ function matches(req, res, users) {
     // Select everyone with gender: female
     connection.query("SELECT * FROM profiles WHERE gender = 'male'", onDone)
   }
-
+ // Or it throws an throws an error
+ // Or the length of data is 0, so there is no data to show.
   function onDone(err, data) {
     if (err || data.length === 0) {
       //account niet kunnen vinden
@@ -295,7 +302,16 @@ function renderForm(req, res) {
 }
 
 // This function render the detail page. That is the profile of someone else.
-//
+// Source for the comments below for this function: Nina van Bergen
+// To make the chat work, and to save the data in the table messages,
+// We need to use SELECT, there we need to specify what we want to know, so here we want to select me and other.
+// We want to see our message, but also the message that has been send back to us as well.
+// That means that we need to specify them twice in order to make that work.
+// You also need to specify the values such as req.params.id twice
+// But because we want one where the logged in user sends them, you need to start with req.session.user.id and then req.params.id
+// And we also want one where the other person sends a message, so then you need to begin with req.params.id and after that req.session.user.id
+// The order of that is very important, so first the logged in user and the id of other user for our messages
+// And after that the id of the other user first and then the logged in user
 function detail(req, res) {
   var id = req.params.id
   connection.query('SELECT * FROM profiles WHERE id = ?', id, function(err, users) {
@@ -366,7 +382,7 @@ function saveMessage(req, res) {
 }
 
 // req.params.id gets the id from the user.
-// from the request you get the parameters and from there the id
+// From the request you get the parameters and from there the id.
 function deleteAccount(req, res) {
   var id = req.params.id
   connection.query('DELETE FROM profiles WHERE id = ?', id, function(err, users) {
@@ -395,11 +411,11 @@ function updatePage(req, res) {
 
 // Because all of the names of the columns are in the connection.query,
 // a user can change the information they filled in when they registered for the site.
-
+// All the things the user can change are in UPDATE profiles SET ....
 function update(req, res) {
   var id = req.params.id
   var body = req.body
-  connection.query("UPDATE profiles SET name = ?, email = ?, age = ?, gender = ?, password = ?, preferredGender = ?, city = ?, favpet = ?, pet = ? WHERE id = ?", [
+  connection.query("UPDATE profiles SET name = ?, email = ?, age = ?, gender = ?, password = ?, preferredGender = ?, city = ? WHERE id = ?", [
     body.name,
     body.email,
     body.age,
@@ -407,8 +423,6 @@ function update(req, res) {
     body.password,
     body.preferredGender,
     body.city,
-    body.favpet,
-    body.pet,
     id
   ], done)
 
