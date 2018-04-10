@@ -126,6 +126,24 @@ connection.connect()
 * Go to your database in the terminal so you can work in that database: `use your_database_name`
  
 __MySQL works with tables__
+
+### Tables
+Profiles table:
+
+| id | name          | age | favpet | pet | city      | email            | password | gender | preferredGender |
+|----|---------------|-----|--------|-----|-----------|------------------|----------|--------|-----------------|
+| 1  | Jimmy Lost    | 25  | Dog    | No  | Amsterdam | jimmy@jimmy.nl   | jimmy    | male   | female          |
+| 2  | Pieter Kroost | 24  | Lizard | Yes | Utrecht   | pieter@pieter.nl | pieter   | male   | female          |
+| 3  | Lauren Brood  | 22  | Dog    | Yes | Groningen | lauren@lauren.nl | lauren   | female | male            |
+| 4  | Liz Brand     | 21  | Horse  | No  | Arnhem    | liz@liz.nl       | liz      | female | male            |
+
+Messages table:  
+
+| id | chatting         | me | other |
+|----|------------------|----|-------|
+| 1  | Hi, how are you? | 8  | 1     |
+| 2  | Hii!!            | 22 | 18    |
+| 3  | Hellooo!         | 18 | 22    |
  
 Create a new table:
 ```
