@@ -7,7 +7,7 @@ To register for this datingsite you have to fill in a form with your information
  
 When you filled in the form to register, at the moment, you only get matched with the people who have the gender you prefer as a partner.
  
-### Explaining Partners&Pets
+### Description Partners&Pets
 On the index page is an explanation about the site. It contains what the site is for and a little bit about how it works.
 From the index page you can go to the log-in page and register page. You can only get to those pages, because the user is still logged in yet or they don't have an account yet. And when you are not logged in or do not have an account, you can't get to your matches or your own profile.  
 <img src="site_images/index.png" width="250"> 
