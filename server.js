@@ -383,6 +383,9 @@ function saveMessage(req, res) {
 
 // req.params.id gets the id from the user.
 // From the request you get the parameters and from there the id.
+// We want to delete an account with this function so we use DELETE.
+// And we need to select what we want to delete from the table profles, the id.
+// After that you get redirected to the index page of the site.
 function deleteAccount(req, res) {
   var id = req.params.id
   connection.query('DELETE FROM profiles WHERE id = ?', id, function(err, users) {
