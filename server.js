@@ -157,7 +157,7 @@ function profile(req, res) {
     res.render('profile.ejs', locals)
   })
 }
-// Inspiratie en bron: Deanna: https://github.com/deannabosschert/freshstart/blob/master/index.js en
+// Inspiration and source: Deanna: https://github.com/deannabosschert/freshstart/blob/master/index.js and
 // Titus: https://github.com/cmda-be/course-17-18/blob/master/examples/mysql-server/index.js
 // This function handles the register page.
 // This is where you add an user to your database.
