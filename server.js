@@ -75,6 +75,7 @@ app.listen(3000)
 // Host = the host for your server
 // User = the username for MySQL
 // Database = the name of your database
+// Folkter-Jan van der Pol
 var connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
@@ -147,6 +148,7 @@ function profile(req, res) {
         map: "../"
       })
     }
+    // Wouter Lem
     var user = users[0]
     var locals = {
       user: user,
@@ -221,7 +223,14 @@ function logout(req, res) {
 function handleLogin(req, res) {
   var body = Object.assign({}, req.body)
   connection.query('SELECT * FROM profiles WHERE email = ?', body.email, function(err, users) {
-    if (err) throw err;
+    if (err) {
+      return res.status(404).render('error.ejs', {
+        id: 404,
+        description: err,
+        map: '../'
+      })
+    }
+    // Wouter Lem
     var user = users[0]
     // This needs to happen if everything goes correct when users log in.
     if (user && user.password === body.password) {
@@ -237,6 +246,7 @@ function handleLogin(req, res) {
 
 // This function is to render the page where users can see their matches.
 // The if else statement makes it possible to filter the preferred genders of the users.
+// Jessie Mason
 function matches(req, res, users) {
   var user = users[0]
   if (req.session.user.preferredGender == 'female') {
@@ -316,8 +326,6 @@ function detail(req, res) {
   var id = req.params.id
   connection.query('SELECT * FROM profiles WHERE id = ?', id, function(err, users) {
     if (err) {
-      //account niet kunnen vinden
-      //404 account not found
       return res.status(404).render('error.ejs', {
         id: 404,
         description: "page not found",
@@ -325,6 +333,7 @@ function detail(req, res) {
       })
     }
     var user = users[0]
+    // Nina van Bergen & Albert de Klein
     connection.query('SELECT * FROM messages WHERE me = ? AND other = ? OR me = ? AND other = ?', [
       req.session.user.id,
       req.params.id,
@@ -332,8 +341,6 @@ function detail(req, res) {
       req.session.user.id
     ], function(err, messages) {
       if (err) {
-        //account niet kunnen vinden
-        //404 account not found
         return res.status(404).render('error.ejs', {
           id: 404,
           description: "page not found",
@@ -367,7 +374,7 @@ function saveMessage(req, res) {
     other: req.body.other,
   }, done)
 
-  // Source: titus github & Nina
+  // Source: Titus github & Nina
   function done(err, data) {
     if (err) {
       return res.status(404).render('error.ejs', {
@@ -418,6 +425,8 @@ function updatePage(req, res) {
 function update(req, res) {
   var id = req.params.id
   var body = req.body
+  // Jessie Mason
+  // Titus send this link to Jessie: https://github.com/mysqljs/mysql#escaping-query-values
   connection.query("UPDATE profiles SET name = ?, email = ?, age = ?, gender = ?, password = ?, preferredGender = ?, city = ? WHERE id = ?", [
     body.name,
     body.email,
