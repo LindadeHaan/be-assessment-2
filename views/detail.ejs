@@ -37,6 +37,15 @@
       </article>
       <% }) %>
 
+
+        <!-- Source: Wouter Lem & Jessie.
+        session && session.loggedIn checks two things. First it checks if session exists,
+        so if it is true or false. Because session has a value that is transferred to a boolean within an if statement.
+        If session is undefined it becomes false, otherwise it is true. After you know if session is true,
+        you also want to know if session.loggedIn is true. So you do the same thing with session.
+        && stops with checking everything ones it comes along something that is false.
+        Both of them have to be true.
+        You can not just doe session.loggedIn, because you have to know if session exists first. -->
         <% if (session && session.loggedIn) { %>
           <form class="chat" action="/chat" method="post">
             <label>
